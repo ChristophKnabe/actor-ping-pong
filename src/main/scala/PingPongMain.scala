@@ -18,8 +18,8 @@ import scala.concurrent.duration.Duration
 object PingPongMain extends App {
   
   val system = ActorSystem("PingPong")  
-  val reflector: ActorRef = system.actorOf(Props[Reflector], "Reflector")
-  system.actorOf(Props(classOf[Thrower], reflector), "Thrower")
+  val reflector: ActorRef = system.actorOf(Reflector.props, "Reflector")
+  system.actorOf(Thrower.props(reflector), "Thrower")
   Await.ready(system.whenTerminated, Duration(1, TimeUnit.MINUTES))
   println("ActorSystem finally shut down.")
 }
