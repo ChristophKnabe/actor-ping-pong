@@ -10,7 +10,7 @@ import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 
 /**
- * A little Akka actor demonstration.
+ * A little Akka classic actor demonstration.
  *
  * @author Christoph Knabe
  * @since 2014-12-04
@@ -22,4 +22,5 @@ object PingPongMain extends App {
   system.actorOf(Thrower.props(reflector), "Thrower")
   Await.ready(system.whenTerminated, Duration(1, TimeUnit.MINUTES))
   println("ActorSystem finally shut down.")
+
 }
